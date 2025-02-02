@@ -1,4 +1,4 @@
-# HelloPlugin
+# QunID
 
 <!--
 ## 插件开发者详阅
@@ -33,10 +33,15 @@
 配置完成 [LangBot](https://github.com/RockChinQ/LangBot) 主程序后使用管理员账号向机器人发送命令即可安装：
 
 ```
-!plugin get <你的插件发布仓库地址>
+!plugin get https://github.com/sanxianxiaohuntun/QunID.git
 ```
 或查看详细的[插件安装说明](https://docs.langbot.app/plugin/plugin-intro.html#%E6%8F%92%E4%BB%B6%E7%94%A8%E6%B3%95)
 
 ## 使用
 
 <!-- 插件开发者自行填写插件使用说明 -->
+安装后开启插件即可使用
+格式为 群友 XXXX 说：内容
+
+## 截图
+![before](https://raw.githubusercontent.com/sanxianxiaohuntun/wodecuntu12/refs/heads/main/f732bba4b68fca26c49f0558da77e408.png)

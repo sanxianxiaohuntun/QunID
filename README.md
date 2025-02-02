@@ -44,4 +44,4 @@
 格式为 群友 XXXX 说：内容
 
 ## 截图
-![before](https://raw.githubusercontent.com/sanxianxiaohuntun/wodecuntu12/refs/heads/main/f732bba4b68fca26c49f0558da77e408.png)
+![before](https://raw.githubusercontent.com/sanxianxiaohuntun/wodecuntu12/refs/heads/main/2adc4765-bafb-43d6-a1fe-7584ac95d2c6.png)

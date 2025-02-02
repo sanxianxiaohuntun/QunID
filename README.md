@@ -43,5 +43,16 @@
 安装后开启插件即可使用，无需任何配置
 格式为 群友 XXXX 说：内容
 
+## 修改
+模型比较蠢的话你自己可以修改下格式目前是
+```
+modified_msg = f"群友 {sender_name} 说：{msg}"
+```
+你可以修改为
+```
+modified_msg = f"群聊中{sender_name} 说：{msg}"
+```
+其中{sender_name}=群友ID，{msg} = 对话内容
+
 ## 截图
 ![before](https://raw.githubusercontent.com/sanxianxiaohuntun/wodecuntu12/refs/heads/main/2adc4765-bafb-43d6-a1fe-7584ac95d2c6.png)

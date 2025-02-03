@@ -30,6 +30,9 @@ class UserIDPlugin(BasePlugin):
 
             modified_msg = f"群友 {sender_name} 说：{msg}"
             
+            # Print modified message to console
+            print(f"Modified message: {modified_msg}")
+            
             if hasattr(ctx.event, 'query'):
                 if hasattr(ctx.event.query, 'user_message'):
                     if isinstance(ctx.event.query.user_message.content, list):

@@ -1,4 +1,109 @@
-# QunID
+# 用户和主人识别插件
+
+## 安装
+
+配置完成 [LangBot](https://github.com/RockChinQ/LangBot) 主程序后使用管理员账号向机器人发送命令即可安装：
+
+```
+!plugin get https://github.com/sanxianxiaohuntun/QunID.git
+```
+
+或查看详细的[插件安装说明](https://docs.langbot.app/plugin/plugin-intro.html#%E6%8F%92%E4%BB%B6%E7%94%A8%E6%B3%95)
+
+## 功能说明
+
+本插件可以在用户发送消息时自动添加用户身份信息，使大模型能够识别发送者的身份和昵称，还可以设置主人身份标识。
+
+主要功能：
+- 在群聊中显示用户的群昵称
+- 在私聊中显示用户的备注名或昵称
+- 支持通过YAML配置文件设置私聊白名单
+- 支持开启/关闭群聊和私聊识别功能
+- 白名单中的用户在私聊时消息不会被修改（可选添加时间提示）
+- 可以设置主人ID，让AI知道谁是主人
+
+### 配置说明
+
+插件会在`plugins/QunID`目录下创建`settings.yaml`配置文件，用于设置插件的行为。你可以手动编辑此文件以自定义插件功能。
+
+#### 完整配置参考
+
+```yaml
+# 私聊白名单用户ID列表（白名单中的用户在私聊时不会被添加用户标识格式）
+private_whitelist:
+  - '123456789'  # 第一个白名单用户，请替换为实际QQ号
+  - '987654321'  # 第二个白名单用户，请替换为实际QQ号
+# 群聊识别开关（true开启，false关闭）
+group_enable: true
+# 私聊识别开关（true开启，false关闭）
+private_enable: true
+# 忽略的消息前缀列表（以这些前缀开头的消息不会被添加用户标识）
+ignore_prefixes:
+  - "!"
+  - "！"
+  - "/"
+  - "搜漫画"
+  - "看漫画"
+  - "&"
+  - "漫画帮助"
+  - "视频帮助"
+  - "视频"
+  - "里番帮助"
+  - "里番"
+# 白名单用户时间提示开关（true开启，false关闭）
+whitelist_time_hint: true
+# 私聊识别关闭时是否添加时间提示开关（true开启，false关闭）
+private_disable_time_hint: true
+# 主人ID设置（用于标识主人身份）
+master_id: '123456789'
+```
+
+#### 私聊白名单设置
+
+在`private_whitelist`列表中添加用户QQ号，这些用户在私聊时消息将不会被添加用户标识格式。可以根据`whitelist_time_hint`设置决定是否添加时间提示。
+
+#### 功能开关
+
+- `group_enable`: 控制群聊识别功能（true开启，false关闭）
+- `private_enable`: 控制私聊识别功能（true开启，false关闭）
+
+#### 忽略前缀设置
+
+`ignore_prefixes`列表中的前缀，如果消息以这些前缀开头，将不会被添加用户标识。适用于命令、特殊功能触发词等。
+
+#### 时间提示设置
+
+- `whitelist_time_hint`: 控制白名单用户是否接收时间提示（true开启，false关闭）
+- `private_disable_time_hint`: 当私聊识别功能关闭时，是否仍添加时间提示（true开启，false关闭）
+
+#### 主人设置
+
+`master_id`：设置主人的QQ号，设置后AI将能够识别谁是主人。消息末尾会添加以下提示之一：
+- 当前是主人(昵称)和你对话 — 当消息发送者是主人时
+- 当前并非主人(主人)和你对话 — 当消息发送者不是主人时
+
+### 注意事项
+
+1. 修改配置文件后，需要重新启动插件才能生效
+2. 数字ID建议用引号包裹（如'123456789'）以避免大数字被科学计数法表示
+3. 保持YAML格式的正确性，特别是缩进和冒号后的空格
+4. 不要删除配置项，如果不需要某功能，将其设置为false或空列表[]即可
+
+## 使用场景
+
+1. **普通聊天**: 自动标识不同用户的身份，方便AI区分对话者
+2. **主人识别**: 设置主人ID后，AI能够识别主人身份，可以据此提供不同的服务
+3. **特殊用户**: 将需要直接与AI对话的用户添加到私聊白名单
+4. **命令前缀**: 自定义忽略前缀，确保命令和特殊功能不受影响
+
+## 截图
+
+![使用效果](https://raw.githubusercontent.com/sanxianxiaohuntun/wodecuntu12/refs/heads/main/f732bba4b68fca26c49f0558da77e408.png)
+
+## 更新日志
+- v0.3: 解决不能识图问题。
+- v0.2: 新增主人识别功能，支持在对话中标识主人身份。
+- v0.1: 初始版本，支持用户身份识别和时间提示。
 
 <!--
 ## 插件开发者详阅
@@ -27,32 +132,3 @@
 
 下方是给用户看的内容，按需修改
 -->
-
-## 安装
-
-配置完成 [LangBot](https://github.com/RockChinQ/LangBot) 主程序后使用管理员账号向机器人发送命令即可安装：
-
-```
-!plugin get https://github.com/sanxianxiaohuntun/QunID.git
-```
-或查看详细的[插件安装说明](https://docs.langbot.app/plugin/plugin-intro.html#%E6%8F%92%E4%BB%B6%E7%94%A8%E6%B3%95)
-
-## 使用
-
-<!-- 插件开发者自行填写插件使用说明 -->
-安装后开启插件即可使用，无需任何配置
-格式为 群友 XXXX 说：内容
-
-## 修改
-模型比较蠢的话你自己可以修改下格式目前是
-```
-modified_msg = f"群友 {sender_name} 说：{msg}"
-```
-你可以修改为
-```
-modified_msg = f"群聊中{sender_name} 说：{msg}"
-```
-其中{sender_name}=群友ID，{msg} = 对话内容
-
-## 截图
-![before](https://raw.githubusercontent.com/sanxianxiaohuntun/wodecuntu12/refs/heads/main/2adc4765-bafb-43d6-a1fe-7584ac95d2c6.png)

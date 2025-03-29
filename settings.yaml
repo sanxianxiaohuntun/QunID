@@ -1,0 +1,20 @@
+private_whitelist:
+- '123456789'
+- '123456789'
+group_enable: true
+private_enable: true
+ignore_prefixes: true
+- "!"
+- "！"
+- "/"
+- "搜漫画"
+- "看漫画"
+- "&"
+- "漫画帮助"
+- "视频帮助"
+- "视频"
+- "里番帮助"
+- "里番"
+whitelist_time_hint: true
+private_disable_time_hint: true
+master_id: '2926253308'

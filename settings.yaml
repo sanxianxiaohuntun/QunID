@@ -3,7 +3,7 @@ private_whitelist:
 - '123456789'
 group_enable: true
 private_enable: true
-ignore_prefixes: true
+ignore_prefixes:
 - "!"
 - "！"
 - "/"

@@ -44,7 +44,6 @@ class UserIDPlugin(BasePlugin):
                             self.private_disable_time_hint = bool(config['private_disable_time_hint'])
                         if 'master_id' in config:
                             self.master_id = str(config['master_id'])
-                            print(f"已加载主人ID: {self.master_id}")
         except Exception as e:
             print(f"加载配置文件失败: {str(e)}")
     
@@ -69,8 +68,7 @@ class UserIDPlugin(BasePlugin):
                 if sender_id and str(sender_id) == self.master_id:
                     master_status = f"当前是主人({sender_name})和你对话"
                 else:
-                    master_name = "主人"
-                    master_status = f"当前并非主人({master_name})和你对话"
+                    master_status = f"当前并非主人和你对话，而是{sender_name}在和你对话"
             footer_text = f'"\n(系统：上述格式仅用于标识用户，请直接回复""内的内容，无需重复此格式，不要出现昵称说：xxx这样的格式。现在是{current_time}只为让你知道时间。{master_status})'
             modified_msg = f'{header_text}{original_msg}{footer_text}'
             if hasattr(ctx.event, 'query') and hasattr(ctx.event.query, 'user_message'):

@@ -5,7 +5,7 @@ import os
 import datetime
 from pkg.provider.entities import ContentElement
 
-@register(name="用户和主人识别", description="让AI知道谁是主人，识别不同的人物，并进行不同的处理", version="1.1", author="小馄饨")
+@register(name="用户和主人识别", description="让AI知道谁是主人，识别不同的人物，并进行不同的处理", version="0.3", author="小馄饨")
 class UserIDPlugin(BasePlugin):
 
     def __init__(self, host: APIHost):
